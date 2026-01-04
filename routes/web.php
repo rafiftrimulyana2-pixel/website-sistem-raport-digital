@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 // Rute ini untuk halaman dashboard
 Route::get('/dashboard', [SiswaController::class, 'dashboard']);
@@ -25,3 +27,19 @@ Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit']);
 
 // Rute ini untuk menyimpan perubahan data ke database
 Route::post('/siswa/update/{id}', [SiswaController::class, 'update']);
+
+// Route ini untuk menampilkan halaman login
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+// Route untuk memproses data login
+Route::post('/login', function (Illuminate\Http\Request $request) {
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('dashboard');
+    }
+    return back()->withErrors(['email' => 'Email atau password salah!']);
+});
