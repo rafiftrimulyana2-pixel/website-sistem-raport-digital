@@ -33,7 +33,7 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-// Route untuk memproses data login
+// Route ini untuk memproses data login
 Route::post('/login', function (Illuminate\Http\Request $request) {
     $credentials = $request->only('email', 'password');
 
@@ -42,4 +42,9 @@ Route::post('/login', function (Illuminate\Http\Request $request) {
         return redirect()->intended('dashboard');
     }
     return back()->withErrors(['email' => 'Email atau password salah!']);
+});
+
+// Route ini untuk melihat jadwal agenda
+Route::get('/agenda', function () {
+    return view('agenda');
 });
