@@ -20,11 +20,11 @@
         </div>
 
             <nav class="mt-8 px-4 space-y-3 flex-1">
-                <a href="#" class="flex items-center px-5 py-3.5 bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-900/40 transition-all">
+                <a href="/dashboard" class="flex items-center px-5 py-3.5 bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-900/40 transition-all">
                     <i class="fas fa-layer-group mr-4 text-lg"></i>
                     <span class="font-semibold text-sm">Dashboard</span>
                 </a>
-                <a href="#" class="flex items-center px-5 py-3.5 text-blue-300 hover:bg-blue-800/40 hover:text-white rounded-2xl transition-all group">
+                <a href="/data_siswa" class="flex items-center px-5 py-3.5 text-blue-300 hover:bg-blue-800/40 hover:text-white rounded-2xl transition-all group">
                     <i class="fas fa-user-graduate mr-4 text-lg group-hover:scale-110"></i>
                     <span class="text-sm font-medium">Data Siswa</span>
                 </a>

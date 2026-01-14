@@ -48,3 +48,18 @@ Route::post('/login', function (Illuminate\Http\Request $request) {
 Route::get('/agenda', function () {
     return view('agenda');
 });
+
+// Route ini untuk melihat tampilan data siswa
+Route::get('/data_siswa', function () {
+    return view('data_siswa');
+});
+
+// Route ini agar URL /input_nilai bisa diakses
+Route::get('/input_nilai', function () {
+    return view('input_nilai');
+});
+
+// Route ini untuk melihat tampilan analisis
+Route::get('/rekomendasi', function () {
+    return view('rekomendasi');
+});
