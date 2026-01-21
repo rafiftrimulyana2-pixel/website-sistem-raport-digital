@@ -63,3 +63,8 @@ Route::get('/input_nilai', function () {
 Route::get('/rekomendasi', function () {
     return view('rekomendasi');
 });
+
+// Route ini untuk melihat tampilan cetak
+Route::get('/cetak', function () {
+    return view('cetak'); // Pastikan nama file Anda adalah cetak.blade.php
+})->name('cetak');

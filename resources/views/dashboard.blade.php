@@ -32,7 +32,7 @@
                 <i class="fas fa-chart-line mr-4 text-lg group-hover:scale-110"></i>
                 <span class="text-sm font-medium">Analisis Rekomendasi</span>
             </a>
-            <a href="#" class="flex items-center px-5 py-3.5 text-blue-300 hover:bg-blue-800/40 hover:text-white rounded-2xl transition-all group">
+            <a href="/cetak" class="flex items-center px-5 py-3.5 text-blue-300 hover:bg-blue-800/40 hover:text-white rounded-2xl transition-all group">
                 <i class="fas fa-print mr-4 text-lg group-hover:scale-110"></i>
                 <span class="text-sm font-medium">Cetak / Export</span>
             </a>
