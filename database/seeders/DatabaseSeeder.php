@@ -15,11 +15,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // User::factory()->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Bu Risa',
+            'email' => 'guru@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+
+        // Baris ini untuk memanggil seeder siswa
+        $this->call([
+        MapelSeeder::class,
+        SiswaSeeder::class,
+        ]);
+
+        $this->call([
+            MapelSeeder::class,
         ]);
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - E-RAPORT</title>
+    <title>Login - SIRA-P</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 min-h-screen flex items-center justify-center p-4">
@@ -12,7 +12,7 @@
 
         <div class="text-white text-center md:text-left">
             <h1 class="text-5xl font-extrabold italic tracking-tighter">
-                <span class="text-red-500">E</span>-RAPORT
+                <span class="text-red-500">SIRA</span>-P
             </h1>
             <p class="text-xl mt-2 font-semibold">Digitalisasi Pendidikan</p>
         </div>

@@ -17,12 +17,11 @@ class SiswaController extends Controller
     // 2. Menampilkan Daftar Siswa (Index)
     public function index(Request $request)
     {
-        // Mengambil kata kunci dari input bernama 'cari'
-        $cari = $request->cari;
+        // Mengambil semua data siswa dari database
+        $semuaSiswa = Siswa::all();
 
-        // Mencari data berdasarkan nama_siswa jika ada kata kunci
-        $data_siswa = Siswa::where('nama_siswa', 'like', "%" . $cari . "%")
-                       ->get();
+    // Mengirim ke halaman daftar siswa
+        return view('data.siswa', compact('semuaSiswa'));
     }
 
     // 3. Menyimpan Data Baru (Store) dengan Validasi (Target Nomor 2)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Raport Guru - Dashboard</title>
+    <title>SIRA-P - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -12,7 +12,7 @@
 <div class="flex h-screen overflow-hidden">
     <aside class="w-72 bg-[#0a113d] text-white flex flex-col shrink-0">
         <div class="p-8 text-2xl font-bold border-b border-blue-900/50 tracking-tight">
-            E-Raport Guru
+            SIRA-P
         </div>
 
         <nav class="mt-8 px-4 space-y-3 flex-1">
