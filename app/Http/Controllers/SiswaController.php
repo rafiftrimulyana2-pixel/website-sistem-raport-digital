@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -17,11 +17,20 @@ class SiswaController extends Controller
     // 2. Menampilkan Daftar Siswa (Index)
     public function index(Request $request)
     {
-        // Mengambil semua data siswa dari database
-        $semuaSiswa = Siswa::all();
+        // Mengambil parameter kelas dari URL, misal: ?kelas=X MIPA 1
+        $kelasTerpilih = $request->query('kelas');
 
-    // Mengirim ke halaman daftar siswa
-        return view('data.siswa', compact('semuaSiswa'));
+    if ($kelasTerpilih) {
+        // Ambil data siswa hanya untuk kelas yang dipilih
+        $semuaSiswa = Siswa::where('kelas', $kelasTerpilih)->get();
+
+        // Arahkan ke halaman "Tampilan Baru" yaitu Profil Kelas
+        return view('siswa_detail', compact('semuaSiswa', 'kelasTerpilih'));
+        }
+
+        // Jika belum pilih kelas, tampilkan kartu utama dengan data dari database
+        $dataKelas = \App\Models\Kelas::all(); // Ambil semua data kelas
+        return view('data_siswa', compact('dataKelas'));
     }
 
     // 3. Menyimpan Data Baru (Store) dengan Validasi (Target Nomor 2)
@@ -73,4 +82,16 @@ class SiswaController extends Controller
         $siswa->delete();
         return redirect('/siswa');
     }
+
+    // Pastikan fungsinya menerima $id sesuai di route baris 74
+public function show($id)
+{
+    // Mengambil data kelas berdasarkan ID yang diklik
+    $kelasTerpilih = Kelas::findOrFail($id);
+
+    // Mengambil siswa yang hanya terdaftar di kelas tersebut
+    $semuaSiswa = Siswa::where('kelas_id', $id)->get();
+
+    return view('siswa_detail', compact('semuaSiswa', 'kelasTerpilih'));
+}
 }

@@ -20,7 +20,7 @@
 <div class="flex h-screen overflow-hidden">
     <aside class="w-72 bg-[#0a113d] text-white flex flex-col shrink-0">
         <div class="p-8 text-2xl font-bold border-b border-blue-900/50 tracking-tight">
-            E-Raport Guru
+            SIRA-P
         </div>
 
         <nav class="mt-8 px-4 space-y-3 flex-1">
@@ -53,6 +53,7 @@
             </a>
         </div>
     </aside>
+
     <main class="flex-1 flex flex-col overflow-hidden">
         <header class="px-6 py-4">
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 flex justify-between items-center px-8 py-4">
@@ -62,12 +63,12 @@
                         <p class="text-[11px] font-900 text-black uppercase">Risa Setyawan, S.Pd.</p>
                         <p class="text-[9px] font-700 text-blue-500 uppercase tracking-widest">Wali Kelas X MIPA 1</p>
                     </div>
-                    <div class="w-9 h-9 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-[10px] shadow-md">RS</div>
+                    <div class="w-9 h-9 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] shadow-md">RS</div>
                 </div>
             </div>
         </header>
 
-        <div class="flex-1 px-6 pb-6 overflow-y-auto custom-scroll">
+        <class= class="flex-1 px-6 pb-6 overflow-y-auto custom-scroll">
             <div class="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-gray-100 flex items-center gap-4">
                 <div class="relative flex-1">
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 text-xs"></i>
@@ -85,102 +86,38 @@
             </div>
 
             <div class="mt-10">
-    <div class="flex items-center justify-between mb-8 px-2">
-        <h3 class="text-xl font-black text-slate-800 uppercase tracking-tighter">Pilih Kelas Ampuan</h3>
-        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-100 px-3 py-1 rounded-full">Total: 3 Kelas</span>
-    </div>
+                <div class="flex items-center justify-between mb-8 px-2">
+                    <h3 class="text-xl font-black text-slate-800 uppercase tracking-tighter">Pilih Kelas Ampuan</h3>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-100 px-3 py-1 rounded-full">Total: 3 Kelas</span>
+                </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    <div class="group relative bg-white rounded-[35px] shadow-sm hover:shadow-2xl hover:shadow-emerald-100 transition-all duration-500 hover:-translate-y-3 border-2 border-emerald-400/20 overflow-hidden">
-        <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-50 rounded-full blur-3xl group-hover:bg-emerald-100 transition-colors"></div>
+    @foreach($dataKelas as $item)
+        <div class="group relative bg-white rounded-[35px] shadow-sm hover:shadow-2xl transition-all duration-500 p-8 mb-8">
+            <div class="flex items-center justify-between mb-10">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg
+                    @if($item->nama_kelas == 'X MIPA 1') bg-gradient-to-br from-emerald-400 to-teal-500
+                    @elseif($item->nama_kelas == 'X MIPA 2') bg-gradient-to-br from-amber-300 to-orange-400
+                    @elseif($item->nama_kelas == 'X MIPA 3') bg-gradient-to-br from-blue-400 to-indigo-500
+                    @else bg-gradient-to-br from-slate-400 to-slate-500 @endif">
 
-        <div class="p-8 relative z-10">
-            <div class="flex justify-between items-start mb-10">
-                <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-400 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-200 group-hover:rotate-12 transition-transform">
-                    <i class="fas fa-flask text-2xl"></i>
+                    @if($item->nama_kelas == 'X MIPA 1') <i class="fas fa-flask text-2xl"></i>
+                    @elseif($item->nama_kelas == 'X MIPA 2') <i class="fas fa-microscope text-2xl"></i>
+                    @elseif($item->nama_kelas == 'X MIPA 3') <i class="fas fa-dna text-2xl"></i>
+                    @endif
                 </div>
                 <span class="px-4 py-1.5 bg-slate-50 text-slate-400 rounded-xl text-[10px] font-black border border-slate-100 uppercase">30 Siswa</span>
             </div>
 
-            <h4 class="text-2xl font-black text-slate-800 uppercase tracking-tighter mb-1">X MIPA 1</h4>
-            <p class="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8">Wali: Risa Setyawan, S.Pd.</p>
+            <h4 class="text-2xl font-black text-slate-800 uppercase tracking-tighter mb-1">{{ $item->nama_kelas }}</h4>
+            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-8">Wali: {{ $item->wali_kelas }}</p>
 
-            <div class="mb-8">
-                <div class="flex justify-between text-[9px] font-black mb-2 uppercase text-slate-400">
-                    <span>Status Keaktifan</span>
-                    <span class="text-emerald-500">28 Aktif</span>
-                </div>
-                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-emerald-400 rounded-full transition-all duration-1000 group-hover:w-[93%]" style="width: 70%"></div>
-                </div>
-            </div>
-
-            <button class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-emerald-200 transition-all active:scale-95">
+            <a href="{{ route('siswa.show', $item->id) }}" class="w-full py-4 bg-emerald-400 hover:bg-emerald-500 text-white rounded-2xl font-bold text-center inline-block transition-all shadow-lg">
                 Lihat Data Siswa
-            </button>
+            </a>
         </div>
-    </div>
-
-    <div class="group relative bg-white rounded-[35px] shadow-sm hover:shadow-2xl hover:shadow-amber-100 transition-all duration-500 hover:-translate-y-3 border-2 border-amber-400/20 overflow-hidden">
-        <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-50 rounded-full blur-3xl group-hover:bg-amber-100 transition-colors"></div>
-
-        <div class="p-8 relative z-10">
-            <div class="flex justify-between items-start mb-10">
-                <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-400 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-amber-200 group-hover:rotate-12 transition-transform">
-                    <i class="fas fa-microscope text-2xl"></i>
-                </div>
-                <span class="px-4 py-1.5 bg-slate-50 text-slate-400 rounded-xl text-[10px] font-black border border-slate-100 uppercase">30 Siswa</span>
-            </div>
-
-            <h4 class="text-2xl font-black text-slate-800 uppercase tracking-tighter mb-1">X MIPA 2</h4>
-            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-8">Wali: Bambang S., S.Pd.</p>
-
-            <div class="mb-8">
-                <div class="flex justify-between text-[9px] font-black mb-2 uppercase text-slate-400">
-                    <span>Status Keaktifan</span>
-                    <span class="text-amber-500">15 Aktif</span>
-                </div>
-                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-amber-400 rounded-full transition-all duration-1000 group-hover:w-[50%]" style="width: 30%"></div>
-                </div>
-            </div>
-
-            <button class="w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-amber-200 transition-all active:scale-95">
-                Lihat Data Siswa
-            </button>
-        </div>
-    </div>
-
-    <div class="group relative bg-white rounded-[35px] shadow-sm hover:shadow-2xl hover:shadow-blue-100 transition-all duration-500 hover:-translate-y-3 border-2 border-blue-400/20 overflow-hidden">
-        <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-50 rounded-full blur-3xl group-hover:bg-blue-100 transition-colors"></div>
-
-        <div class="p-8 relative z-10">
-            <div class="flex justify-between items-start mb-10">
-                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200 group-hover:rotate-12 transition-transform">
-                    <i class="fas fa-dna text-2xl"></i>
-                </div>
-                <span class="px-4 py-1.5 bg-slate-50 text-slate-400 rounded-xl text-[10px] font-black border border-slate-100 uppercase">30 Siswa</span>
-            </div>
-
-            <h4 class="text-2xl font-black text-slate-800 uppercase tracking-tighter mb-1">X MIPA 3</h4>
-            <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-8">Wali: Siti Aminah, S.Pd.</p>
-
-            <div class="mb-8">
-                <div class="flex justify-between text-[9px] font-black mb-2 uppercase text-slate-400">
-                    <span>Status Keaktifan</span>
-                    <span class="text-blue-500">30 Aktif</span>
-                </div>
-                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-blue-500 rounded-full transition-all duration-1000 group-hover:w-[100%]" style="width: 85%"></div>
-                </div>
-            </div>
-
-            <button class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-blue-200 transition-all active:scale-95">
-                Lihat Data Siswa
-            </button>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 </body>

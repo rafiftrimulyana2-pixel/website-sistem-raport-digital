@@ -25,12 +25,9 @@ class DatabaseSeeder extends Seeder
 
         // Baris ini untuk memanggil seeder siswa
         $this->call([
-        MapelSeeder::class,
-        SiswaSeeder::class,
-        ]);
-
-        $this->call([
-            MapelSeeder::class,
+            KelasSeeder::class, // 1. Buat Kelas dulu (MIPA 1, 2, 3)
+            MapelSeeder::class, // 2. Buat Mata Pelajaran (Matematika, Biologi, dll)
+            SiswaSeeder::class, // 3. Masukkan Siswa ke dalam Kelas yang sudah ada
         ]);
     }
 }

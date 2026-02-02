@@ -68,3 +68,7 @@ Route::get('/rekomendasi', function () {
 Route::get('/cetak', function () {
     return view('cetak'); // Pastikan nama file Anda adalah cetak.blade.php
 })->name('cetak');
+
+// Route ini untuk melihat tampilan data seluruh siswa
+Route::get('/data_siswa', [SiswaController::class, 'index'])->name('siswa.index');
+Route::get('/data-siswa/{id}', [SiswaController::class, 'show'])->name('siswa.show');

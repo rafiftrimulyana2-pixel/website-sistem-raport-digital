@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nisn')->unique();
             $table->string('nama_siswa');
             $table->string('kelas');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
             $table->timestamps();
         });
     }
