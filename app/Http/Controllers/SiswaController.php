@@ -84,8 +84,8 @@ class SiswaController extends Controller
     }
 
     // Pastikan fungsinya menerima $id sesuai di route baris 74
-public function show($id)
-{
+    public function show($id)
+    {
     // Mengambil data kelas berdasarkan ID yang diklik
     $kelasTerpilih = Kelas::findOrFail($id);
 
@@ -93,5 +93,26 @@ public function show($id)
     $semuaSiswa = Siswa::where('kelas_id', $id)->get();
 
     return view('siswa_detail', compact('semuaSiswa', 'kelasTerpilih'));
-}
+
+    // Mengambil data siswa spesifik, jika tidak ada akan muncul error 404
+    $siswa = Siswa::findOrFail($id);
+
+    // Kirim data siswa ke file view detail
+    return view('siswa_detail', compact('siswa'));
+
+    // Mengambil data satu siswa secara spesifik berdasarkan ID
+    $siswa = Siswa::findOrFail($id);
+
+    // Mengarahkan ke file view profil (misal: profile_siswa.blade.php)
+    return view('profile_siswa', compact('siswa'));
+    }
+
+    public function show_detail($id)
+    {
+        // Mengambil data siswa spesifik untuk ditampilkan di profil
+        $siswa = Siswa::findOrFail($id);
+
+        // Memanggil file view yang berada langsung di folder views
+        return view('profil_siswa', compact('siswa'));
+    }
 }

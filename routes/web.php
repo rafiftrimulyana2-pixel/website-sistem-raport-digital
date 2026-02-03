@@ -72,3 +72,6 @@ Route::get('/cetak', function () {
 // Route ini untuk melihat tampilan data seluruh siswa
 Route::get('/data_siswa', [SiswaController::class, 'index'])->name('siswa.index');
 Route::get('/data-siswa/{id}', [SiswaController::class, 'show'])->name('siswa.show');
+
+// Route ini untuk menampilkan detail siswa berdasarkan ID
+Route::get('/siswa/detail/{id}', [SiswaController::class, 'show'])->name('siswa.detail');

@@ -72,7 +72,7 @@
 
             <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
                 <div class="p-6 border-b border-slate-100">
-                    <h3 class="text-lg font-black text-slate-800 inter-bold">Daftar Siswa Kelas {{ $kelasTerpilih }} (30 Siswa)</h3>
+                    <h3 class="text-lg font-black text-slate-800 inter-bold">Daftar Siswa Kelas {{ $kelasTerpilih->nama_kelas }} ({{ $kelasTerpilih->siswas->count() }} Siswa)</h3>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -113,26 +113,27 @@
                                     </div>
                                 </td>
                                 <td class="p-3 text-center">
-                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-xl font-bold text-[10px] uppercase hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 active:scale-95">
+                                    <a href="{{ route('siswa.show_detail', $siswa->id) }}" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-[10px] uppercase inter-bold">
                                         LIHAT DETAIL
-                                    </button>
+                                    </a>
                                 </td>
-                            </tr>
-                            @empty
-                            <tr><td colspan="6" class="p-20 text-center text-slate-300 font-bold italic uppercase text-xs">Data belum dimuat.</td></tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
 
-                <div class="p-6 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center">
-                    <p class="text-[10px] font-bold text-slate-400 uppercase">... 20 data siswa lainnya dapat dilihat dengan menggulir</p>
-                    <div class="flex gap-2">
-                        <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-bold text-slate-400 hover:bg-slate-50 uppercase shadow-sm">Previous</button>
-                        <button class="px-4 py-2 bg-blue-500 rounded-lg text-[10px] font-bold text-white hover:bg-blue-700 uppercase shadow-md shadow-blue-200">Next</button>
+                                </tr>
+                                @empty
+                                <tr><td colspan="6" class="p-20 text-center text-slate-300 font-bold italic uppercase text-xs">Data belum dimuat.</td></tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="p-6 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">... 30 data siswa lainnya dapat dilihat dengan menggulir</p>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-bold text-slate-400 hover:bg-slate-50 uppercase shadow-sm">Previous</button>
+                            <button class="px-4 py-2 bg-blue-500 rounded-lg text-[10px] font-bold text-white hover:bg-blue-700 uppercase shadow-md shadow-blue-200">Next</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-</div>
+        </main>
+    </div>

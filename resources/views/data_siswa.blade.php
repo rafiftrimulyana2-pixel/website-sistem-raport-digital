@@ -93,32 +93,61 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    @foreach($dataKelas as $item)
-        <div class="group relative bg-white rounded-[35px] shadow-sm hover:shadow-2xl transition-all duration-500 p-8 mb-8">
-            <div class="flex items-center justify-between mb-10">
-                <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg
-                    @if($item->nama_kelas == 'X MIPA 1') bg-gradient-to-br from-emerald-400 to-teal-500
-                    @elseif($item->nama_kelas == 'X MIPA 2') bg-gradient-to-br from-amber-300 to-orange-400
-                    @elseif($item->nama_kelas == 'X MIPA 3') bg-gradient-to-br from-blue-400 to-indigo-500
-                    @else bg-gradient-to-br from-slate-400 to-slate-500 @endif">
+           @foreach($dataKelas as $item)
+<div class="relative w-full rounded-[35px] p-7 mb-8 bg-white/90 backdrop-blur-xl border border-white transition-all duration-500 transform hover:-translate-y-3 group/card cursor-pointer overflow-hidden
+    @if($item->nama_kelas == 'X MIPA 1') hover:shadow-[0_25px_50px_-12px_rgba(16,185,129,0.25)]
+    @elseif($item->nama_kelas == 'X MIPA 2') hover:shadow-[0_25px_50px_-12px_rgba(245,158,11,0.25)]
+    @elseif($item->nama_kelas == 'X MIPA 3') hover:shadow-[0_25px_50px_-12px_rgba(79,70,229,0.25)]
+    @endif">
 
-                    @if($item->nama_kelas == 'X MIPA 1') <i class="fas fa-flask text-2xl"></i>
-                    @elseif($item->nama_kelas == 'X MIPA 2') <i class="fas fa-microscope text-2xl"></i>
-                    @elseif($item->nama_kelas == 'X MIPA 3') <i class="fas fa-dna text-2xl"></i>
-                    @endif
-                </div>
-                <span class="px-4 py-1.5 bg-slate-50 text-slate-400 rounded-xl text-[10px] font-black border border-slate-100 uppercase">30 Siswa</span>
-            </div>
+    <div class="absolute -top-6 -right-6 w-32 h-32 opacity-[0.05] pointer-events-none">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full rotate-12">
+            <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2" stroke-dasharray="8 8" class="text-slate-900"/>
+        </svg>
+    </div>
 
-            <h4 class="text-2xl font-black text-slate-800 uppercase tracking-tighter mb-1">{{ $item->nama_kelas }}</h4>
-            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-8">Wali: {{ $item->wali_kelas }}</p>
-
-            <a href="{{ route('siswa.show', $item->id) }}" class="w-full py-4 bg-emerald-400 hover:bg-emerald-500 text-white rounded-2xl font-bold text-center inline-block transition-all shadow-lg">
-                Lihat Data Siswa
-            </a>
+    <div class="flex flex-col items-center justify-center mb-6 relative z-10 text-center">
+        <div class="w-16 h-16 rounded-[22px] flex items-center justify-center text-white shadow-xl transform transition-all duration-700 group-hover/card:rotate-6 group-hover/card:scale-110 mb-4
+            @if($item->nama_kelas == 'X MIPA 1') bg-gradient-to-br from-emerald-400 to-teal-500
+            @elseif($item->nama_kelas == 'X MIPA 2') bg-gradient-to-br from-orange-400 to-amber-500
+            @elseif($item->nama_kelas == 'X MIPA 3') bg-gradient-to-br from-indigo-500 to-blue-600
+            @endif">
+            <i class="fas fa-chalkboard-teacher text-2xl"></i>
         </div>
-    @endforeach
+
+        <span class="px-3 py-1 bg-slate-50/80 rounded-full text-[9px] inter-bold text-slate-400 border border-slate-100 uppercase tracking-widest shadow-sm">
+            {{ $item->siswas->count() }} Siswa
+        </span>
+    </div>
+
+    <div class="text-center mb-7 relative z-10">
+        <h3 class="text-xl inter-bold text-slate-800 tracking-tight mb-1 group-hover/card:scale-105 transition-transform duration-300">
+            {{ $item->nama_kelas }}
+        </h3>
+        <div class="flex items-center justify-center gap-2">
+            <div class="w-4 h-[1.5px] rounded-full bg-slate-200"></div>
+            <p class="text-[10px] inter-bold text-slate-400 uppercase tracking-widest">Wali: {{ $item->wali_kelas }}</p>
+            <div class="w-4 h-[1.5px] rounded-full bg-slate-200"></div>
+        </div>
+    </div>
+
+    <a href="{{ route('siswa.show', $item->id) }}"
+       class="w-full block py-3.5 text-white rounded-[20px] inter-bold text-center transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2 group/btn relative overflow-hidden
+       @if($item->nama_kelas == 'X MIPA 1') bg-emerald-500
+       @elseif($item->nama_kelas == 'X MIPA 2') bg-orange-500
+       @elseif($item->nama_kelas == 'X MIPA 3') bg-indigo-600
+       @endif">
+
+       <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite]"></div>
+
+       <span class="text-sm inter-bold relative z-10 uppercase tracking-widest">
+        Lihat Data Siswa
+    </span>
+    <i class="fas fa-arrow-right text-[10px] relative z-10 transition-transform duration-300 group-hover/btn:translate-x-2"></i>
+    </a>
 </div>
+@endforeach
+    </div>
 
 </body>
 </html>

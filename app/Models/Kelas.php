@@ -14,4 +14,9 @@ class Kelas extends Model
 
     // 3. Matikan timestamps jika kamu tidak punya kolom created_at/updated_at di tabel kelas
     public $timestamps = false;
+
+    public function siswas()
+    {
+    return $this->hasMany(Siswa::class, 'kelas_id');
+    }
 }
